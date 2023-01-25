@@ -107,7 +107,7 @@
 
                                 <ul class="collapse list-unstyled" id="homeSubmenu{{ $value->id  }}">
                                     @foreach($value->subcategories as $subcat)
-                                                 <li id="#"><a href="/store?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
+                                                 <li id="#"><a href="{{url('store')}}?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -119,7 +119,7 @@
 
                                     <ul class="collapse list-unstyled" id="homeSubmenu{{ $value->id  }}">
                                         @foreach($value->subcategories as $subcat)
-                                            <li id="#"><a href="/store?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
+                                            <li id="#"><a href="{{url('store')}}?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
                                         @endforeach
                                     </ul>
                                 </li>
@@ -135,8 +135,14 @@
                                 <a href="#homeSubmenu{{ $main_tag_category->id  }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{$main_tag_category->name}}</a>
 
                                 <ul class="collapse list-unstyled" id="homeSubmenu{{ $main_tag_category->id  }}">
+                                    {{--SubCategories--}}
+                                    @foreach($main_tag_category->subcategories as $subcat)
+                                        <li id="#"><a href="{{url('store')}}?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
+                                    @endforeach
+
+                                    {{--Main Categories--}}
                                     @foreach($tag_categories as $tag_category)
-                                        <li id="#"><a href="/store?category_id={{$tag_category->id}}"><span>{{$tag_category->name}}</span></a></li>
+                                        <li id="#"><a href="{{url('store')}}?category_id={{$tag_category->id}}"><span>{{$tag_category->name}}</span></a></li>
                                     @endforeach
                                 </ul>
                             </li>
