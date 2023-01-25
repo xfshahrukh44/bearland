@@ -137,7 +137,7 @@
                                 <ul class="collapse list-unstyled" id="homeSubmenu{{ $main_tag_category->id  }}">
                                     {{--SubCategories--}}
                                     @foreach($main_tag_category->subcategories as $subcat)
-                                        <li id="#"><a href="{{url('store')}}?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
+                                        <li id="#"><a href="{{url('store')}}?sub_category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
                                     @endforeach
 
                                     {{--Main Categories--}}

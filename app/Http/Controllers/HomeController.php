@@ -138,9 +138,12 @@ class HomeController extends Controller
     public function shop(Request $request)
     {
         $category_id = $request->category_id;
+        $sub_category_id = $request->sub_category_id;
 
         if($category_id){
             $products = Store::where('sub_category','=',$category_id)->paginate(10);
+        }else if ($sub_category_id) {
+            $products = Store::where('sub_category','=',$sub_category_id)->paginate(10);
         }else{
             $products = Store::paginate(10);
         }
