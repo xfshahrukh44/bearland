@@ -113,6 +113,18 @@
                             </li>
                             @endforeach
 
+                            @foreach($DBCategory::getBinCategories() as $key => $value)
+                                <li class="">
+                                    <a href="#homeSubmenu{{ $value->id  }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{$value->name}}</a>
+
+                                    <ul class="collapse list-unstyled" id="homeSubmenu{{ $value->id  }}">
+                                        @foreach($value->subcategories as $subcat)
+                                            <li id="#"><a href="/store?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
+
                             {{--Tags Categories--}}
                             @php
                                 $tag_categories = $DBCategory::getTagsCategories();
