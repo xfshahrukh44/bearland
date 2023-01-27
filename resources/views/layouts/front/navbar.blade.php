@@ -107,7 +107,7 @@
 
                                 <ul class="collapse list-unstyled" id="homeSubmenu{{ $value->id  }}">
                                     @foreach($value->subcategories as $subcat)
-                                                 <li id="#"><a href="{{url('store')}}?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
+                                                 <li id="#"><a href="{{url('store')}}?sub_category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -119,7 +119,7 @@
 
                                     <ul class="collapse list-unstyled" id="homeSubmenu{{ $value->id  }}">
                                         @foreach($value->subcategories as $subcat)
-                                            <li id="#"><a href="{{url('store')}}?category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
+                                            <li id="#"><a href="{{url('store')}}?sub_category_id={{$subcat->id}}"><span>{{$subcat->name}}</span></a></li>
                                         @endforeach
                                     </ul>
                                 </li>
@@ -142,7 +142,11 @@
 
                                     {{--Main Categories--}}
                                     @foreach($tag_categories as $tag_category)
-                                        <li id="#"><a href="{{url('store')}}?category_id={{$tag_category->id}}"><span>{{$tag_category->name}}</span></a></li>
+{{--                                        <li id="#"><a href="{{url('store')}}?category_id={{$tag_category->id}}"><span>{{$tag_category->name}}</span></a></li>--}}
+
+                                        @foreach($tag_category->subcategories as $subcat2)
+                                            <li id="#"><a href="{{url('store')}}?sub_category_id={{$subcat2->id}}"><span>{{$subcat2->name}}</span></a></li>
+                                        @endforeach
                                     @endforeach
                                 </ul>
                             </li>

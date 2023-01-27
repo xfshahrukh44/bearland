@@ -18,6 +18,16 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
 }
 
 
+
+Route::get('temp',function () {
+    $products = \App\Models\Store::all();
+
+    $products->update([
+       ''
+    ]);
+});
+
+
 //===================== Admin Routes =====================//
 
 Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'admin'], function () {
@@ -126,16 +136,16 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
      //Order Status Change Routes//
     Route::get('status/completed/{id}','Admin\\ProductController@updatestatuscompleted')->name('status.completed');
     Route::get('status/pending/{id}','Admin\\ProductController@updatestatusPending')->name('status.pending');
-    
+
     /* Store Management Routes*/
-  
+
 
 
 });
-  
+
 Route::get('admin/store/category/{id}','Admin\\StoreController@getSub');
-    
-    
+
+
 //==============================================================//
 
 //Log Viewer
@@ -267,7 +277,7 @@ Route::get('user-ip', 'HomeController@getusersysteminfo');
 Route::resource('admin/blog', 'Admin\\BlogController');
 Route::resource('admin/category', 'Admin\CategoryController');
 
-// Jobs 
+// Jobs
 // JobsController
 Route::get('admin/jobs','Admin\JobsController@index');
 Route::get('admin/job/create','Admin\JobsController@create');
